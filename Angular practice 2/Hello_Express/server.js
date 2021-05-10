@@ -12,6 +12,7 @@ app.use(express.static(__dirname + "/static"));
 app.use(session({secret:'I Am IronMan'}))
 app.use(bodyParser.urlencoded({extended:true}))
 
+// does this set users.ejs??? 
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 
@@ -28,7 +29,7 @@ app.get('/', (req,res) => {
 
 app.get('/home', function (request, response) {
     // response.send("<h1>Home</h1>");
-    let something = "something else"
+    let something = request.session.email
     let users = [{name:'bob'}, {name:'carl'}]
     response.render('users', {users: users, something:something})
 })
@@ -38,10 +39,19 @@ app.get('/login', (req,res) => {
 })
 app.post('/login', (req,res) => {
     console.log('this is from form', req.body);
+    req.session.email = req.body.email;
+    console.log("what is this part", req.session);
     res.redirect('home')
 })
 // notice that the function is app.get(...) why do you think the function is called get?
 
+//to get destroy session
+app.get("/logout", (req,res) => {
+    req.session.destroy(()=>{
+        res.redirect('/home')
+    })
+
+})
 
 
 
