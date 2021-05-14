@@ -41,17 +41,19 @@ app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 
 //routing
-app.get('/', (req, res) => {
-    res.send('Home')
-})
+require('./server/configs/routes')(app)
 
-app.get('/users', (req,res)=>{
-    User.find({})
-    .then(users => {
-        console.log(users);
-    })
-    .catch(err => {console.log((err));})
-})
+// app.get('/', (req, res) => {
+//     res.send('Home')
+// })
+
+// app.get('/users', (req,res)=>{
+//     User.find({})
+//     .then(users => {
+//         console.log(users);
+//     })
+//     .catch(err => {console.log((err));})
+// })
 
 app.get('/setup', (req,res) => {
     for(let i =0 ; i < 5; i++){

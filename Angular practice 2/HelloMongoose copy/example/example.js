@@ -30,5 +30,8 @@ module.exports = {
     index: (req,res) => {
         // res.render('index')
         console.log('rendering index');
-    } 
+    } ,
+    new: (req, res) => {
+        console.log("rendering new");
+    }
 }
