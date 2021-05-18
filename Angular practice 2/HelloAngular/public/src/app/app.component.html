@@ -1,0 +1,18 @@
+<h2>{{title}}</h2>
+<h2>{{tasks}}</h2>
+<h1>HELLO ANGULAR</h1>
+
+<div>
+    <!-- <h2>{{tasks[0].name}}</h2> -->
+    <!-- a better way to get all the objects display -->
+
+    <ul>
+        <li *ngFor='let task of tasks'>{{task.name}} is completed: 
+            <span class="red" *ngIf='!task.completed'>{{task.completed}}</span>
+            <span class="green" *ngIf='task.completed'>{{task.completed}}</span>
+        </li>
+    </ul>
+</div>
+<button (click)='dodishes()'>Do Dishes</button>
+
+<router-outlet></router-outlet>

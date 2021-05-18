@@ -41,7 +41,7 @@ app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 
 //routing
-require('./server/configs/routes')(app)
+require('./server/configs/user-routes')(app)
 
 // app.get('/', (req, res) => {
 //     res.send('Home')
